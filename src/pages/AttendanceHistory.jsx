@@ -7,7 +7,7 @@ const History = () => {
     return (
         <>
             <Header currentRoute="/history" />
-            <div className="container">
+            <div className="px-3">
                 <h1>{user.name}, this is your Attendance History.</h1>
             </div>
         </>

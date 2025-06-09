@@ -15,7 +15,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="container mx-auto mt-4 max-w-md">
+        <div className="container mx-auto mt-4 w-full lg:w-1/2 max-w-none">
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

@@ -4,9 +4,10 @@ import { useAuth } from '../utils/AuthContext'
 const Account = () => {
     const { user } = useAuth()
     return (
-        <>
+
+        <div>
             <Header currentRoute="/account" />
-            <div className="container">
+            <div className="px-3">
                 <h1>{user.name}, this is your ACCOUNT Details.</h1>
                 <form className="account-form">
                     <div className="form-group">
@@ -24,7 +25,8 @@ const Account = () => {
                     <button type="submit">Update Account</button>
                 </form>
             </div>
-        </>
+        </div>
+
     )
 }
 
