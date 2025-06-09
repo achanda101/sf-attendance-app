@@ -3,7 +3,7 @@ import './App.css'
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Home from './pages/Home'
-import Profile from './pages/Profile'
+import Account from './pages/Account'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import History from './pages/AttendanceHistory';
@@ -21,7 +21,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route element={<PrivateRoutes />}>
               <Route path="/" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/account" element={<Account />} />
               <Route path="/history" element={<History />} />
             </Route>
           </Routes>
