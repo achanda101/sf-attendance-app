@@ -1,7 +1,31 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../utils/AuthContext'
+import DOMPurify from 'dompurify'
 
 const Login = () => {
+    const navigate = useNavigate()
+    const { user, loginUser } = useAuth()
+
+    const loginForm = useRef(null)
+
+    useEffect(() => {
+        if (user) {
+            navigate('/')
+        }
+    }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const email = DOMPurify.sanitize(loginForm.current.email.value)
+        const password = DOMPurify.sanitize(loginForm.current.password.value)
+        const userInfo = {
+            email,
+            password
+        }
+        loginUser(userInfo)
+    }
+
     return (
         <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
             <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
@@ -17,7 +41,7 @@ const Login = () => {
                 </h1>
 
                 {/* Form */}
-                <form className="space-y-6">
+                <form className="space-y-6" ref={loginForm} onSubmit={handleSubmit}>
                     {/* Email Field */}
                     <div>
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
@@ -28,7 +52,7 @@ const Login = () => {
                             id="email"
                             name="email"
                             placeholder="Enter your email"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                             required
                         />
                     </div>
@@ -43,7 +67,7 @@ const Login = () => {
                             id="password"
                             name="password"
                             placeholder="Enter your password"
-                            className="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                             required
                         />
                     </div>
@@ -51,7 +75,8 @@ const Login = () => {
                     {/* Login Button */}
                     <button
                         type="submit"
-                        className="w-full bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+                        value="login"
+                        className="w-full bg-green-600 text-white py-2 px-4 rounded-md font-medium hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition duration-200"
                     >
                         Login
                     </button>
@@ -60,14 +85,13 @@ const Login = () => {
                 {/* Sign Up Link */}
                 <div className="mt-6 text-center">
                     <button
-                        className="text-blue-600 hover:text-blue-700 text-sm font-medium hover:underline"
+                        className="text-green-600 hover:text-green-700 text-sm font-medium hover:underline hover:decoration-green-700"
                     >
-                        Don't have an account? Sign up
+                        Don't have an account? Register here.
                     </button>
                 </div>
             </div>
         </div>
-
     )
 }
 

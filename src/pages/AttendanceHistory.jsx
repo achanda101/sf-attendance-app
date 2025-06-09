@@ -2,16 +2,16 @@ import React from 'react'
 import Header from '../components/Header'
 import { useAuth } from '../utils/AuthContext'
 
-const Profile = () => {
+const History = () => {
     const { user } = useAuth()
     return (
         <>
-            <Header currentRoute="/profile" />
+            <Header currentRoute="/history" />
             <div className="container">
-                <h1>{user.name}, this is your Profile.</h1>
+                <h1>{user.name}, this is your Attendance History.</h1>
             </div>
         </>
     )
 }
 
-export default Profile
+export default History
