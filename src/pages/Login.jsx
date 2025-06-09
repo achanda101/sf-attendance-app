@@ -27,13 +27,13 @@ const Login = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-            <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
+        <div className="bg-gray-50 flex justify-center px-4 py-6">
+            <div className="max-w-md w-full bg-white rounded-lg shadow-md p-10 min-h-fit pt-10 pb-7">
                 {/* Header */}
                 <div className="flex items-center justify-center mb-4">
                     <img src="/sf-logo.png" alt="SF Logo" className="h-16 inline" />
-                    <span className="text-2xl font-bold text-gray-900 ml-4">
-                        SF Attendance App
+                    <span className="text-xl font-medium text-gray-900 ml-4">
+                        Solidarity Foundation<br />Attendance Tracker
                     </span>
                 </div>
                 <h1 className="text-3xl font-bold text-center text-gray-900 mb-8">
@@ -85,7 +85,7 @@ const Login = () => {
                 {/* Sign Up Link */}
                 <div className="mt-6 text-center">
                     <button
-                        className="text-green-600 hover:text-green-700 text-sm font-medium hover:underline hover:decoration-green-700"
+                        className="text-green-600 hover:text-green-700 text-sm font-medium underline-offset-2 hover:underline"
                     >
                         Don't have an account? Register here.
                     </button>
