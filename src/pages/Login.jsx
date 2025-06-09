@@ -10,9 +10,9 @@ const Login = () => {
     const loginForm = useRef(null)
 
     useEffect(() => {
-        // if (user) {
-        navigate('/')
-        // }
+        if (user) {
+            navigate('/')
+        }
     }, [])
 
     const handleSubmit = (e) => {
