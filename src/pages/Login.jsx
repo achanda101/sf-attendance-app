@@ -26,6 +26,10 @@ const Login = () => {
         loginUser(userInfo)
     }
 
+    const registerClick = () => {
+        navigate('/register');
+    };
+
     return (
         <div className="bg-gray-50 flex justify-center px-4 py-6">
             <div className="max-w-md w-full bg-white rounded-lg shadow-md p-10 min-h-fit pt-10 pb-7">
@@ -85,6 +89,7 @@ const Login = () => {
                 {/* Sign Up Link */}
                 <div className="mt-6 text-center">
                     <button
+                        onClick={registerClick}
                         className="text-green-600 hover:text-green-700 text-sm font-medium underline-offset-2 hover:underline"
                     >
                         Don't have an account? Register here.

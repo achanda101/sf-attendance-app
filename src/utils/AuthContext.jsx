@@ -70,7 +70,8 @@ export const AuthProvider = ({ children }) => {
                 } else if (error.code === 503) {
                     toast.error('Service unavailable. Please try again later.', { position: "bottom-right" });
                 } else {
-                    toast.error(`Registration error (${error.code}): ${error.message}`, { position: "bottom-right" });
+                    alert(`Registration error (${error.code}): ${error.message}`);
+                    // toast.error(`Registration error (${error.code}): ${error.message}`, { position: "bottom-right" });
                 }
             }
         }
