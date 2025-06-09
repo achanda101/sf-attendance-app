@@ -27,6 +27,7 @@ function App() {
           </Routes>
         </div>
       </AuthProvider>
+      <ToastContainer />
     </Router >
   )
 }
