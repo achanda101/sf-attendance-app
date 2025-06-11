@@ -15,7 +15,36 @@ function CheckInStatus() {
     const [ isCheckedIn, setIsCheckedIn ] = useState(false);
     const [ checkInTime, setCheckInTime ] = useState(null);
     const [ checkOutTime, setCheckOutTime ] = useState(null);
+    const [ elapsedTime, setElapsedTime ] = useState('00:00:00');
     const [ loading, setLoading ] = useState(false)
+
+    // Timer effect
+    useEffect(() => {
+        let interval = null;
+
+        if (isCheckedIn && checkInTime) {
+            interval = setInterval(() => {
+                const now = new Date();
+                const checkIn = new Date(checkInTime);
+                const diff = now - checkIn;
+
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                setElapsedTime(
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+                );
+            }, 1000);
+        } else {
+            setElapsedTime('00:00:00');
+        }
+
+        return () => {
+            if (interval) clearInterval(interval);
+        };
+    }, [ isCheckedIn, checkInTime ]);
+
 
     useEffect(() => {
         fetchEmployeeData();
@@ -92,7 +121,10 @@ function CheckInStatus() {
                             </div>
                             <div className="text-xs text-gray-600 space-y-0">
                                 {isCheckedIn ? (
-                                    <div>Checked-In at: {checkInTime}</div>
+                                    <>
+                                        <div>Checked-In at: {checkInTime}</div>
+                                        <div className="text-2xl font-bold text-blue-600">{elapsedTime}</div>
+                                    </>
                                 ) : (
                                     <>
                                         <div>Last Check-In: {checkInTime}</div>
