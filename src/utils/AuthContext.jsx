@@ -53,7 +53,17 @@ export const AuthProvider = ({ children }) => {
     const registerUser = async (userInfo) => {
         setLoading(true);
         try {
-            await account.create(ID.unique(), userInfo.email, userInfo.password1, userInfo.name);
+            await account.create(
+                ID.unique(),
+                userInfo.email,
+                userInfo.password1,
+                userInfo.name,
+                {
+                    checkInTime: userInfo.checkInTime || null,
+                    checkOutTime: userInfo.checkOutTime || null,
+                    checkInStatus: userInfo.checkInStatus || false
+                });
+            // Create a session after registration
             await account.createEmailPasswordSession(userInfo.email, userInfo.password1);
             let accountDetails = await account.get();
             setUser(accountDetails);

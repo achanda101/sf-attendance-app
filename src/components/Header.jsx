@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../utils/AuthContext'
+import CheckInStatus from './CheckInStatus';
 
 const Header = ({ currentRoute }) => {
     const { logoutUser } = useAuth()
@@ -76,29 +77,7 @@ const Header = ({ currentRoute }) => {
             </div>
 
             {/* Status Section - Center */}
-            <div className="flex items-center mt-2">
-                <div className="flex-1">
-                    <div className="bg-gray-100 rounded-lg p-1.5">
-                        <div className="flex items-center justify-between">
-                            <div className="flex-1">
-                                <div className="flex items-center space-x-2 mb-1">
-                                    <span className="text-s font-medium text-gray-700">STATUS:</span>
-                                    <span className="text-s font-bold text-red-500">CHECKED OUT</span>
-                                </div>
-                                <div className="text-xs text-gray-600 space-y-0">
-                                    <div>Last Check-In: June 6 2025 10am</div>
-                                    <div>Last Check-Out: June 6 2025 7pm</div>
-                                </div>
-                            </div>
-
-                            {/* Check-In Button */}
-                            <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-lg font-medium transition-colors">
-                                Check-In
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <CheckInStatus />
         </header>
     );
 };

@@ -21,6 +21,8 @@ const Register = () => {
         const email = DOMPurify.sanitize(registerForm.current.email.value)
         const password1 = DOMPurify.sanitize(registerForm.current.password1.value)
         const password2 = DOMPurify.sanitize(registerForm.current.password2.value)
+        const checkInTime = null // Placeholder for check-in time, if needed later
+        const checkInStatus = false
 
         if (password1 !== password2) {
             toast.error('Passwords do not match', { position: "bottom-right" })
@@ -31,7 +33,9 @@ const Register = () => {
             name,
             email,
             password1,
-            password2
+            password2,
+            checkInTime,
+            checkInStatus
         }
         registerUser(userInfo)
     }

@@ -16,7 +16,7 @@ const Account = () => {
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <input type="email" id="email" name="email" defaultValue={user.email} />
+                        <input type="email" id="email" name="email" defaultValue={user.email} readOnly />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Reset Password</label>
